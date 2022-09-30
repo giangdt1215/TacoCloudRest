@@ -51,6 +51,9 @@ public class SecurityConfig {
 					.antMatchers("/design", "/orders").hasRole("USER")
 					.antMatchers("/", "/**").permitAll()
 					.antMatchers("/api/**").permitAll()
+					//config for h2-console page and error
+					.antMatchers("/h2-console/**", "/console/**").permitAll()
+					.antMatchers("/error/**").permitAll()
 				.and()
 					.formLogin()
 						.loginPage("/login")
@@ -58,7 +61,11 @@ public class SecurityConfig {
 					.logout()
 						.logoutSuccessUrl("/")
 				.and()
-					.csrf().ignoringAntMatchers("/api/**", "/data-api/**")
+					.csrf().ignoringAntMatchers("/api/**", "/data-api/**",
+						"/h2-console/**", "/console/**", "/error/**") // for access h2-console
+				.and()
+				//for access h2-console
+				.headers().frameOptions().disable()
 				.and()
 				.build();
 	}
