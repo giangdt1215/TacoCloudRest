@@ -1,5 +1,6 @@
 package com.dtg.tacocloud.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -23,7 +24,7 @@ import lombok.EqualsAndHashCode;
 @Entity
 @EqualsAndHashCode(exclude = "createdAt")
 @RestResource(rel = "tacos", path = "tacos")
-public class Taco {
+public class Taco implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
