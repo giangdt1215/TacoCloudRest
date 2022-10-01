@@ -47,7 +47,7 @@ public class Taco implements Serializable {
     
     @NotNull(message = "You must choose at least 1 ingredient ")
     @Size(min=1, message="You must choose at least 1 ingredient")
-    @ManyToMany
+    @ManyToMany(targetEntity = Ingredient.class)
     private List<Ingredient> ingredients = new ArrayList<>();
     
     public void addIngredient(Ingredient ingredient) {
